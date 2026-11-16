@@ -1,21 +1,32 @@
-def suffix_array_naive(text):
-    n = len(text)
+import sys #needed to get cmd line arguments
+
+def suffix_array_naive(sequence):
+    n = len(sequence)
+
+    #create a list containing the starting index of every suffix
     sa = list(range(n))
 
-    # Sort suffixes lexicographically
-    sa.sort(key=lambda i: text[i:])
+    #sort the suffixes alphabetically based on the substring starting at each index
+    #the sort function compares these suffixes lexicographically
+    sa.sort(key=lambda i: sequence[i:])
 
+    #return the sorted starting indices of the suffixes
     return sa
 
+
 def main():
-    text = "BANANA"
+    #open and read the input file
+    with open(sys.argv[1], "r") as f:
+        sequence = f.read().strip()
 
-    sa = suffix_array_naive(text)
+    #construct the suffix array using the naive algorithm
+    sa = suffix_array_naive(sequence)
 
+    #print the original sequence and the resulting suffix array
     print("Algorithm: Naive")
-    print("Input:", text)
+    print("Input:", sequence)
     print("Suffix Array:", sa)
 
 
-if __name__ == "__main__":
+if __name__=="__main__":
     main()
