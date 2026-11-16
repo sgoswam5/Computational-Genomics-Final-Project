@@ -1,0 +1,7 @@
+# Ignore all genomic data and metric outputs
+data/
+*.fa
+*.fa.gz
+*.bed
+*.bam
+*.csv
